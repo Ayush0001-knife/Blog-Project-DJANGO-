@@ -5,12 +5,66 @@
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Blog Website</title>
+      <title>Django Blog</title>
       <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-      <h1 class="heading">Welcome to the Blog Website</h1>
+      <!-- Navbar -->
+      <header class="navbar">
+            <div class="logo">Django<span>Blog</span></div>
+            <nav>
+                  <ul>
+                        {% for category in categories %}
+                        <li><a href="#">{{category}}</a></li>
+                        {% endfor %}
+                  </ul>
+            </nav>
+            <div class="auth-buttons">
+                  <a href="#" class="btn login">Login</a>
+                  <a href="#" class="btn register">Register</a>
+            </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero">
+            <div class="hero-content">
+                  <h1>Welcome to the Future of Blogging</h1>
+                  <p>Read articles that inspire, educate, and entertain. Stay updated with the latest trends and
+                        insights.</p>
+                  <a href="#" class="btn primary">Start Reading</a>
+            </div>
+      </section>
+
+      <!-- Featured Posts -->
+      <section class="posts">
+            <h2>Featured Posts</h2>
+            <div class="post-grid">
+                  {% for blog in featured_blogs %}
+                  <article class="post-card">
+                        {% if blog.blog_image %}
+                        <img src="{{ blog.blog_image.url }}" alt="{{ blog.title }}">
+                        {% else %}
+                        <img src="{% static 'images/default.jpeg' %}" alt="Default">
+                        {% endif %}
+
+                        <h3>{{ blog.title }}</h3>
+                        <p>{{ blog.short_description|truncatewords:20 }}....</p>
+                        <a href="#">Read More →</a>
+                  </article>
+                  {% endfor %}
+            </div>
+      </section>
+
+
+      <!-- Footer -->
+      <footer class="footer">
+            <p>&copy; 2025 Django Blog | Made with ❤️ by Ayush</p>
+            <div class="socials">
+                  <a href="#">GitHub</a> | <a href="#">LinkedIn</a> | <a href="#">Twitter</a>
+            </div>
+      </footer>
 </body>
 
 </html>
