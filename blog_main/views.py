@@ -9,6 +9,6 @@ def home(request):
     
     context = {
         'categories': categories,
-        'featured_blogs': featured_blogs,
+        'featured_blogs': featured_blogs, 
     }
     return render(request, 'home.html', context)

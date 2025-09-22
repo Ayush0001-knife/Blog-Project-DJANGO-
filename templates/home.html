@@ -17,9 +17,12 @@
             <nav>
                   <ul>
                         {% for category in categories %}
-                        <li><a href="#">{{category}}</a></li>
+                        <li>
+                              <a href="{% url 'posts_by_category' category.id %}">{{ category }}</a>
+                        </li>
                         {% endfor %}
                   </ul>
+
             </nav>
             <div class="auth-buttons">
                   <a href="#" class="btn login">Login</a>
