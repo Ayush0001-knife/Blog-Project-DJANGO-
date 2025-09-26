@@ -28,9 +28,11 @@
                   {% endif %}
 
                   <h3>{{ blog.title }}</h3>
-                  <p>{{ blog.short_description|truncatewords:20 }}....</p>
-                  <a href="#">Read More →</a>
+                  <p>{{ blog.short_description|truncatewords:20 }}...</p>
+
+                  <a href="{% url 'post_detail' blog.id %}">Read More →</a>
             </article>
+
             {% endfor %}
       </div>
 </section>
